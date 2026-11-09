@@ -21,7 +21,13 @@ O relatório é gerado em `target/site/jacoco/index.html`.
 
 ## Analisar no SonarQube
 
-Com o SonarQube local ativo em `http://localhost:9000` e um token criado no servidor:
+Inicie o SonarQube localmente com Docker Compose:
+
+```bash
+docker compose up -d
+```
+
+Depois que o serviço estiver disponível, acesse `http://localhost:9000`. No primeiro acesso, use as credenciais padrão `admin` / `admin`, altere a senha, crie um token e execute:
 
 ```bash
 mvn clean verify sonar:sonar \
@@ -30,3 +36,9 @@ mvn clean verify sonar:sonar \
 ```
 
 O Quality Gate mínimo recomendado está documentado em [docs/quality-gate.md](docs/quality-gate.md).
+
+Para parar o ambiente, mantendo os dados da análise:
+
+```bash
+docker compose down
+```
